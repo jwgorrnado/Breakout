@@ -1,8 +1,8 @@
 /// <reference path = "p5.global.d.ts"/>
 
 class Game {
-  width = windowWidth;
-  height = windowHeight;
+  width = windowWidth - 50;
+  height = windowHeight - 50;
   lives = 3;
   score = 0;
   targetRows = random(2, 5);
@@ -12,8 +12,8 @@ class Game {
 }
 class Ball {
   constructor() {
-    this.x = random(game.width / 2 - 50, game.width / 2 + 50);
-    this.y = random(game.height / 2 - 50, game.height / 2 + 50);
+    this.x = random(game.width / 2 - 100, game.width / 2 + 100);
+    this.y = random(game.height / 2 - 100, game.height / 2 + 100);
     this.vx = random([-3, -2, 2, 3]);
     this.vy = random([-2, -3]);
     this.size = 50;
@@ -37,10 +37,10 @@ class Ball {
   }
   checkSpeed() {
     if (this.vx === 0) {
-      this.vx = 2;
+      this.vx += 2;
     }
     if (this.vy === 0) {
-      this.vy = 2;
+      this.vy += 2;
     }
   }
   collideWithWalls() {
@@ -131,7 +131,7 @@ class Paddle {
   draw() {
     fill(game.background);
     stroke(this.color);
-    strokeWeight(4);
+    strokeWeight(1);
     rect(this.x, this.y, this.width, this.height);
   }
   topEdge() {
@@ -186,7 +186,7 @@ let targets = [];
 
 var setup = function () {
   game = new Game();
-  createCanvas(game.width, game.height);
+  createCanvas(game.width, windowHeight);
   background(game.background);
   ball = new Ball();
   ball2 = new Ball();
