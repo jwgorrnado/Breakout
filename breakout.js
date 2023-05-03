@@ -1,4 +1,4 @@
-/// <reference path = "lib/p5.global.d.ts"/>
+/// <reference path = "p5.global.d.ts"/>
 
 class Game {
   width = windowWidth;
