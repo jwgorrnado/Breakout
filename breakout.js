@@ -44,7 +44,7 @@ class Ball {
     }
   }
   collideWithWalls() {
-    if (this.x - this.radius <= 0 || this.x + this.radius >= windowWidth) {
+    if (this.x - this.radius <= 0 || this.x + this.radius >= game.width) {
       this.vx = -this.vx;
       this.r = random(100, 255);
       this.g = random(100, 255);
@@ -56,7 +56,7 @@ class Ball {
       this.g = random(100, 255);
       this.b = random(100, 255);
     }
-    if (this.y + this.radius >= windowHeight) {
+    if (this.y + this.radius >= game.height) {
       this.x = random(game.width / 2 - 50, game.width / 2 + 50);
       this.y = random(game.height / 2 - 50, game.height / 2 + 50);
       game.lives -= 1;
@@ -216,7 +216,7 @@ var draw = function () {
     textSize(50);
     textAlign(CENTER);
     textFont("Ariel");
-    text("YOU WIN!", windowWidth / 2, windowHeight / 2);
+    text("YOU WIN!", game.width / 2, game.height / 2);
     noLoop();
   }
   if (game.lives === 0) {
@@ -226,7 +226,7 @@ var draw = function () {
     textSize(50);
     textAlign(CENTER);
     textFont("Ariel");
-    text("SKILL ISSUE!", windowWidth / 2, windowHeight / 2);
+    text("SKILL ISSUE!", game.width / 2, game.height / 2);
     noLoop();
   }
   if (game.lives > 0 && game.gameWon === false) {
