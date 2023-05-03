@@ -1,8 +1,8 @@
 /// <reference path = "p5.global.d.ts"/>
 
 class Game {
-  width = windowWidth - 200;
-  height = windowHeight - 100;
+  width = windowWidth;
+  height = windowHeight;
   lives = 3;
   score = 0;
   targetRows = random(2, 5);
