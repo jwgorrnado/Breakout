@@ -26,6 +26,7 @@ class Ball {
   draw() {
     fill(game.background);
     stroke(this.r, this.g, this.b);
+    strokeWeight(2);
     circle(this.x, this.y, this.size);
     this.x += this.vx;
     this.y += this.vy;
@@ -131,7 +132,7 @@ class Paddle {
   draw() {
     fill(game.background);
     stroke(this.color);
-    strokeWeight(1);
+    strokeWeight(2);
     rect(this.x, this.y, this.width, this.height);
   }
   topEdge() {
@@ -206,32 +207,39 @@ var draw = function () {
   for (const target of targets) {
     target.draw();
   }
+  fill(0);
+  stroke(140, 69, 169);
+  textSize(30);
+  textAlign(CENTER);
+  textFont("Helvetica");
+  text("Score: " + game.score, 100, game.height - 50);
   keyPressed();
   if (targets.length === 0) {
     // you win!
-    background("green");
+    background("#0B9100");
     game.gameWon = true;
     fill(255);
     stroke(0);
     textSize(50);
     textAlign(CENTER);
-    textFont("Ariel");
+    textFont("Helvetica");
     text("YOU WIN!", game.width / 2, game.height / 2);
     noLoop();
   }
   if (game.lives === 0) {
-    background(169, 0, 0);
+    background("#8C2A2A");
     fill(255);
     stroke(0);
     textSize(50);
     textAlign(CENTER);
-    textFont("Ariel");
+    textFont("Helvetica");
     text("SKILL ISSUE!", game.width / 2, game.height / 2);
     noLoop();
   }
   if (game.lives > 0 && game.gameWon === false) {
     let lifePos = 500;
     stroke(169, 0, 0);
+    strokeWeight(2);
     fill(0);
     for (let index = 0; index < game.lives; index++) {
       circle(50, (lifePos -= 50), 20);
